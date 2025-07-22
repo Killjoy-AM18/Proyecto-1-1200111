@@ -11,7 +11,7 @@ const config = {
         cors: {
             server: [
                 {
-                    origin: "localhost:3000", 
+                    origin: "localhost:4200", 
                     credentials: true
                 }
             ]
@@ -22,6 +22,8 @@ const config = {
 app.use(cors(
     config.application.cors.server
   ));
+app.set('port', process.env.PORT || 4200);
+
 app.use(morgan('dev'));
 app.use(myConnection(mysql,{
     host:'localhost',
@@ -33,14 +35,41 @@ app.use(myConnection(mysql,{
 app.use(express.urlencoded({extended: false}));
 
 var bodyParser = require('body-parser');
- // create application/json parser
+
 app.use(bodyParser.json());
 
 
-//inicializando el server
 app.listen(app.get('port'), () =>{
-    console.log("PUERTO 3000");
+    console.log("PUERTO 4200");
 });	
 
 const productosRoutes = require('./routes/productos');
 app.use('/api/productos', productosRoutes);
+
+const estadosRoutes = require('./rutas/estados');
+const paisesRoutes = require('./rutas/paises');
+const ciudadRoutes = require('./rutas/ciudad');
+
+const asignaviajeRoutes = require('./rutas/asignaviaje');
+const bancosRoutes = require('./rutas/bancos');
+const destinoRoutes = require('./rutas/destino');
+
+const empleadosRoutes = require('./rutas/empleados');
+const origenRoutes = require('./rutas/origen');
+const tipoempleadoRoutes = require('./rutas/tipoempleado');
+
+const tipousuariosRoutes = require('./rutas/tipousuarios');
+const tipovehiculoRoutes = require('./rutas/tipovehiculo');
+const transportistasRoutes = require('./rutas/transportistas');
+
+const usuariosRoutes = require('./rutas/usuarios');
+const vehiculosRoutes = require('./rutas/vehiculos');
+const viajecompletoRoutes = require('./rutas/viajecompleto');
+const formabagoRoutes = require('./rutas/formapago');
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
+app.use('/api/ventas', ventasRoutes);
+
+app.use(express.static(path.join(__dirname,'public')));

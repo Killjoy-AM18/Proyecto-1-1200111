@@ -4,5 +4,15 @@
     "main":"index.js",
     "scripts": {
         "test":"hecho\"Error: no test specified\"&& exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "cors":"^2.8.5",
+        "morgan": "^1.10.0",
+        "express-myconnection": "^1.0.4",
+        "express":"^5.1.0",
+        "mysql": "^2.18.1"
     }
 }

@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const productosController = require('../controllers/productosController');
 
-// Rutas CRUD
-router.get('/', productosController.listar);
-router.post('/agregar', productosController.agregar);
-router.post('/editar/:id', productosController.editar);
-router.get('/eliminar/:id', productosController.eliminar);
+const areas_trabajoController = require('../controller/areas_trabajoController');
+router.get('/', areas_trabajoController.list);
+router.post('/', areas_trabajoController.save);
+router.delete('/', areas_trabajoController.delete);
+router.get('/', areas_trabajoController.edit);
+router.post('/', areas_trabajoController.update);
 
-module.exports = router;
+module.exports = router;
